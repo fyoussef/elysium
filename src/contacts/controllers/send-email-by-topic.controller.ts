@@ -1,8 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { SendEmailByTopicDto } from '../dtos/send-email.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { CommandBus } from '@nestjs/cqrs';
 import { SendEmailByTopicCommand } from '../commands/send-email-by-topic.command';
+import { SendEmailByTopicDto } from '../dtos/send-email-by-topic.dto';
 
 @Controller('send/topic')
 @ApiTags('Contacts')
