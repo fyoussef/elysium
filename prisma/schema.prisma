@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Contacts {
+  id            String          @id @default(uuid())
+  email         String
+  createdAt     DateTime        @default(now()) @map("created_at")
+  updatedAt     DateTime?       @updatedAt @map("updated_at")
+  contactTopics ContactTopics[]
+
+  @@map("contacts")
+}
+
+model ContactTopics {
+  id        String    @id @default(uuid())
+  contactId String
+  topic     String
+  contact   Contacts  @relation(fields: [contactId], references: [id])
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+
+  @@unique([contactId, topic])
+  @@map("contact_topics")
+}
