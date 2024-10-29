@@ -11,6 +11,8 @@ import { BullModule } from '@nestjs/bullmq';
 import { NotificationsConsumer } from './queue/notifications-consumer';
 import { SendEmailsController } from './controllers/send-emails.controller';
 import { SendEmailsHandler } from './commands/handlers/send-emails.handler';
+import { SendEmailNowHandler } from './commands/handlers/send-email-now.handler';
+import { SendEmailNowController } from './controllers/send-email-now.controller';
 
 @Module({
   imports: [
@@ -32,6 +34,7 @@ import { SendEmailsHandler } from './commands/handlers/send-emails.handler';
     ListContactsController,
     SendEmailByTopicController,
     SendEmailsController,
+    SendEmailNowController,
   ],
   providers: [
     CreateContactHandler,
@@ -39,6 +42,7 @@ import { SendEmailsHandler } from './commands/handlers/send-emails.handler';
     SendEmailByTopicHandler,
     NotificationsConsumer,
     SendEmailsHandler,
+    SendEmailNowHandler,
   ],
 })
 export class Contacts {}
